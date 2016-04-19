@@ -1,0 +1,72 @@
+\section{Problem ID: 228 Middle of Linked List}
+\subsection{Description}
+Find the middle node of a linked list.
+
+\subsection{Example}
+Given 1->2->3, return the node with value 2.
+
+Given 1->2, return the node with value 1.
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+/**
+ * Definition of ListNode
+ * class ListNode {
+ * public:
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int val) {
+ *         this->val = val;
+ *         this->next = NULL;
+ *     }
+ * }
+ */
+class Solution{
+public:
+    /**
+     * @param head: the head of linked list.
+     * @return: a middle node of the linked list
+     */
+    ListNode *middleNode(ListNode *head) {
+        // Write your code here
+        if(head == NULL){
+            return NULL;
+        }
+        ListNode *fast = head;
+        ListNode *slow = head;
+        while(fast->next != NULL && fast->next->next != NULL){
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow;
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+"""
+Definition of ListNode
+class ListNode(object):
+
+    def __init__(self, val, next=None):
+        self.val = val
+        self.next = next
+"""
+
+class Solution:
+    # @param head: the head of linked list.
+    # @return: a middle node of the linked list
+    def middleNode(self, head):
+        # Write your code here
+        if head is None:
+            return None
+        slow = head;
+        fast = head;
+        while fast.next is not None and fast.next.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+\end{lstlisting}
