@@ -1,0 +1,136 @@
+\section{Problem ID: 497 Shape Factory}
+\subsection{Description}
+Factory is design pattern in common usage. Implement a ShapeFactory that can generate correct shape.
+
+\subsection{Example}
+\scriptsize
+\begin{lstlisting}
+ShapeFactory sf = new ShapeFactory();
+Shape shape = sf.getShape("Square");
+shape.draw();
+>>  ----
+>> |    |
+>> |    |
+>>  ----
+
+shape = sf.getShape("Triangle");
+shape.draw();
+>>   /\
+>>  /  \
+>> /____\
+
+shape = sf.getShape("Rectangle");
+shape.draw();
+>>  ----
+>> |    |
+>>  ----
+\end{lstlisting}
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+/**
+ * Your object will be instantiated and called as such:
+ * ShapeFactory* sf = new ShapeFactory();
+ * Shape* shape = sf->getShape(shapeType);
+ * shape->draw();
+ */
+class Shape {
+public:
+    virtual void draw() const=0;
+};
+
+class Rectangle: public Shape {
+    // Write your code here
+    void draw() const{
+        cout << " ----" << endl << "|    |" << endl << " ----" << endl;
+    }
+};
+
+class Square: public Shape {
+    // Write your code here
+     void draw() const{
+        cout << " ----" << endl << "|    |" << endl
+        << "|    |" << endl << " ----" << endl;
+     }
+};
+
+class Triangle: public Shape {
+    // Write your code here
+     void draw() const{
+        cout << "  /\\" << endl << " /  \\" << endl << "/____\\" << endl;
+    }
+};
+
+class ShapeFactory {
+public:
+    /**
+     * @param shapeType a string
+     * @return Get object of type Shape
+     */
+    Shape* getShape(string& shapeType) {
+        // Write your code here
+        if(shapeType == "Square"){
+            return new Square();
+        }
+        if(shapeType == "Rectangle"){
+            return new Rectangle();
+        }
+        if(shapeType == "Triangle"){
+            return new Triangle();
+        }
+        return NULL;
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+"""
+Your object will be instantiated and called as such:
+sf = ShapeFactory()
+shape = sf.getShape(shapeType)
+shape.draw()
+"""
+class Shape:
+    def draw(self):
+        raise NotImplementedError('This method should have implemented.')
+
+class Triangle(Shape):
+    # Write your code here.
+    def draw(self):
+        print "  /\\"
+        print " /  \\"
+        print "/____\\"
+
+class Rectangle(Shape):
+    # Write your code here
+    def draw(self):
+        print " ----"
+        print "|    |"
+        print " ----"
+
+class Square(Shape):
+    # Write your code here
+    def draw(self):
+        print " ----"
+        print "|    |"
+        print "|    |"
+        print " ----"
+
+class ShapeFactory:
+    # @param {string} shapeType a string
+    # @return {Shape} Get object of type Shape
+    def getShape(self, shapeType):
+        # Write your code here
+        if shapeType == "Square":
+            return Square()
+        if shapeType == "Triangle":
+            return Triangle()
+        if shapeType == "Rectangle":
+            return Rectangle()
+        return None
+        
+\end{lstlisting}
+\normalsize 
