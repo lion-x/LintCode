@@ -1,0 +1,54 @@
+\section{Problem ID: 1 A + B Problem}
+\subsection{Description}
+Write a function that add two numbers A and B. You should not use + or any arithmetic operators.
+
+\subsection{Clarification}
+\textbf{Are a and b both 32-bit integers?}
+
+Yes.
+
+\textbf{Can I use bit operation?}
+
+Sure you can.
+
+\subsection{Example}
+Given a=1 and b=2 return 3
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+class Solution {
+public:
+    /*
+     * @param a: The first integer
+     * @param b: The second integer
+     * @return: The sum of a and b
+     */
+    int aplusb(int a, int b) {
+        // write your code here, try to do it without arithmetic operators.
+        if(b == 0){
+            return a;
+        }
+        else{
+            aplusb(a ^ b, (a & b) << 1);
+        }
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+class Solution:
+    """
+    @param a: The first integer
+    @param b: The second integer
+    @return:  The sum of a and b
+    """
+
+    def aplusb(self, a, b):
+        # write your code here, try to do it without arithmetic operators.
+        return a + b
+\end{lstlisting}
+\normalsize 
+\textbf{Note: Python version will be Updated in future.}

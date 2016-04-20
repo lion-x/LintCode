@@ -1,0 +1,57 @@
+\section{Problem ID: 428 Pow(x, n)}
+\subsection{Description}
+Implement pow(x, n).
+
+\subsection{Example}
+Pow(2.1, 3) = 9.261
+
+Pow(0, 1) = 0
+
+Pow(1, 0) = 1
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+class Solution {
+public:
+    /**
+     * @param x the base number
+     * @param n the power number
+     * @return the result
+     */
+    double myPow(double x, int n) {
+        // Write your code here
+        if(n < 0){
+            return 1.0 / myPow(x, -n);
+        }
+        if(n == 0){
+            return 1;
+        }
+        if(n % 2 == 0){
+            return  myPow(x, n>>1) * myPow(x, n>>1);
+        }else{
+            return  myPow(x, n>>1) * myPow(x, n>>1) * x;
+        }
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+class Solution:
+    # @param {double} x the base number
+    # @param {int} n the power number
+    # @return {double} the result
+    def myPow(self, x, n):
+        # Write your code here
+        if n < 0:
+            return 1.0 / self.myPow(x, -n)
+        if n == 0:
+            return 1
+        if n % 2 == 0:
+            return self.myPow(x, n >> 1) * self.myPow(x, n >> 1)
+        else:
+            return self.myPow(x, n >> 1) * self.myPow(x, n >> 1) * x
+\end{lstlisting}
+\normalsize 

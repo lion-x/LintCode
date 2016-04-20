@@ -1,0 +1,71 @@
+\section{Problem ID: 452 Remove Linked List Elements}
+\subsection{Description}
+Remove all elements from a linked list of integers that have value val.
+
+\subsection{Example}
+Given 1->2->3->3->4->5->3, val = 3, you should return the list as 1->2->4->5
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    /**
+     * @param head a ListNode
+     * @param val an integer
+     * @return a ListNode
+     */
+    ListNode *removeElements(ListNode *head, int val) {
+        // Write your code here
+        ListNode dummy;
+        dummy.next = head;
+        head = &dummy;
+        while (head->next != NULL) {
+            if(head->next->val == val){
+                head->next = head->next->next;
+            }
+            else{
+            head = head->next;
+            }
+        }
+        return dummy.next;
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    # @param head, a ListNode
+    # @param val, an integer
+    # @return a ListNode
+    def removeElements(self, head, val):
+        # Write your code here
+        if head is None:
+            return head
+        dummy = ListNode(0)
+        dummy.next = head
+        head = dummy
+        while head.next is not None:
+            if head.next.val == val:
+                head.next = head.next.next
+            else:
+                head = head.next
+        return dummy.next
+\end{lstlisting}
+\normalsize 
