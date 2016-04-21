@@ -1,0 +1,57 @@
+\section{Problem ID: 3 Digit Counts}
+\subsection{Description}
+Count the number of k's between 0 and n. k can be 0 - 9.
+
+\subsection{Example}
+if n=12, k=1 in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], we have FIVE 1's (1, 10, 11, 12)
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+class Solution {
+public:
+    /*
+     * param k : As description.
+     * param n : As description.
+     * return: How many k's between 0 and n.
+     */
+    int digitCounts(int k, int n) {
+        // write your code here
+        int count = 0;
+        for(int i = 0; i <= n; i++){
+            int j = i;
+            while(true){
+                if(j % 10 == k){
+                    count++;
+                }
+                j = j / 10;
+                if(j == 0){
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+class Solution:
+    # @param k & n  two integer
+    # @return ans a integer
+    def digitCounts(self, k, n):
+        assert(n >= 0 and 0 <= k <= 9)
+        count = 0
+        for i in range(n + 1):
+            j = i
+            while True:
+                if j % 10 == k:
+                    count = count + 1
+                j = j // 10
+                if j == 0:
+                    break
+        return count
+\end{lstlisting}
+\normalsize 
