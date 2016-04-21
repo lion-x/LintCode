@@ -1,0 +1,52 @@
+\section{Problem ID: 8  Rotate String}
+\subsection{Description}
+Given a string and an offset, rotate string by offset. (rotate from left to right)
+
+\subsection{Example}
+Given "abcdefg".
+
+offset=0 => "abcdefg"
+
+offset=1 => "gabcdef"
+
+offset=2 => "fgabcde"
+
+offset=3 => "efgabcd"
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+class Solution {
+public:
+    /**
+     * @param str: a string
+     * @param offset: an integer
+     * @return: nothing
+     */
+    void rotateString(string &str,int offset){
+        //wirte your code here
+        if (str.size() == 0){
+
+        }else{
+            offset = offset % str.size();
+            str = str.substr(str.size() - offset, offset) + 
+            str.substr(0, str.size() - offset);
+        }
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+class Solution:
+    # @param s: a list of char
+    # @param offset: an integer
+    # @return: nothing
+    def rotateString(self, s, offset):
+	    # write you code here
+	    if len(s) != 0:
+	        offset = offset % len(s)
+	        s[:] = s[-offset:] + s[:-offset]
+\end{lstlisting}
+\normalsize 

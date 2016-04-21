@@ -1,0 +1,67 @@
+\section{Problem ID: 6  Merge Sorted Array II}
+\subsection{Description}
+Merge two given sorted integer array A and B into a new sorted integer array.
+
+\subsection{Example}
+A=[1,2,3,4]
+
+B=[2,4,5,6]
+
+return [1,2,2,3,4,4,5,6]
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+class Solution {
+public:
+    /**
+     * @param A and B: sorted integer array A and B.
+     * @return: A new sorted integer array
+     */
+    vector<int> mergeSortedArray(vector<int> &A, vector<int> &B) {
+        // write your code here
+        vector<int> C;
+        int i = 0, j = 0;
+        while(i < A.size() && j < B.size()){
+            if(A[i] < B[j]){
+                C.push_back(A[i++]);
+            }else{
+                C.push_back(B[j++]);
+            }
+        }
+        while(i < A.size()){
+            C.push_back(A[i++]);
+        }
+        while(j < B.size()){
+            C.push_back(B[j++]);
+        }
+        return C;
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+class Solution:
+    #@param A and B: sorted integer array A and B.
+    #@return: A new sorted integer array
+    def mergeSortedArray(self, A, B):
+        # write your code here
+        C = []
+        i = 0
+        j = 0
+        while i < len(A) and j < len(B):
+            if A[i] < B[j]:
+                C.append(A[i])
+                i = i + 1
+            else:
+                C.append(B[j])
+                j = j + 1
+        if(i < len(A)):
+           C.extend(A[i:])
+        if(j < len(B)):
+           C.extend(B[j:])
+        return C
+\end{lstlisting}
+\normalsize 
