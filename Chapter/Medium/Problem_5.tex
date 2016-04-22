@@ -1,0 +1,39 @@
+\section{Problem ID: 5 Kth Largest Element}
+\subsection{Description}
+Find K-th largest element in an array.
+
+\subsection{Example}
+In array [9,3,2,4,8], the 3rd largest element is 4.
+
+In array [1,2,3,4,5], the 1st largest element is 5, 2nd largest element is 4, 3rd largest element is 3 and etc.
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+class Solution {
+public:
+    /*
+     * param k : description of k
+     * param nums : description of array and index 0 ~ n-1
+     * return: description of return
+     */
+    int kthLargestElement(int k, vector<int> nums) {
+        // write your code here
+        sort(nums.rbegin(), nums.rend());
+        return nums[k-1];
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+class Solution:
+    # @param k & A a integer and an array
+    # @return ans a integer
+    def kthLargestElement(self, k, A):
+        A = sorted(A, reverse = True)
+        return A[k-1]
+\end{lstlisting}
+\normalsize 
+\textbf{Note: }This problem will be update soon!

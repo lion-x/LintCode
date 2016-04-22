@@ -1,0 +1,80 @@
+\section{Problem ID: 419 Roman to Integer}
+\subsection{Description}
+Given a roman numeral, convert it to an integer.
+
+The answer is guaranteed to be within the range from 1 to 3999.
+
+\subsection{Clarification}
+What is Roman Numeral?
+
+https://en.wikipedia.org/wiki/Roman\_numerals
+
+https://zh.wikipedia.org/wiki/\%E7\%BD\%97\%E9\%A9\%AC\%E6\%95\%B0\%E5\%AD\%97
+
+http://baike.baidu.com/view/42061.htm
+
+
+\subsection{Example}
+IV -> 4
+
+XII -> 12
+
+XXI -> 21
+
+XCIX -> 99
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+class Solution {
+public:
+    /**
+     * @param s Roman representation
+     * @return an integer
+     */
+    int romanToInt(string& s) {
+        // Write your code here
+        map<char, int> num;
+        num['I'] = 1;
+        num['V'] = 5;
+        num['X'] = 10;
+        num['L'] = 50;
+        num['C'] = 100;
+        num['D'] = 500;
+        num['M'] = 1000;
+        int ans = num[s[s.length() - 1]];
+        for (int i = s.length() - 2; i >= 0; i--) {
+            if (num[s[i]] < num[s[i + 1]]){
+                ans -= num[s[i]];
+            }
+            else{
+                ans += num[s[i]];
+            }
+        }
+        return ans;
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+class Solution:
+    # @param {string} s Roman representation
+    # @return {int} an integer
+    def romanToInt(self, s):
+        # Write your code here
+        if s == "":
+            return 0
+        roman = {'I':1, 'V':5, 'X':10, 'L':50, 'C':100, 'D':500, 'M':1000}
+        sum = roman[s[-1]]
+        i = len(s) - 2
+        while i >= 0:
+            if roman[s[i]] < roman[s[i + 1]]:
+                sum -= roman[s[i]]
+            else:
+                sum += roman[s[i]]
+            i -= 1
+        return sum
+\end{lstlisting}
+\normalsize 
