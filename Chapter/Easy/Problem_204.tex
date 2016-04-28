@@ -1,0 +1,52 @@
+\section{Problem ID: 204 Singleton}
+\subsection{Description}
+Singleton is a most widely used design pattern. If a class has and only has one instance at every moment, we call this design as singleton. For example, for class Mouse (not a animal mouse), we should design it in singleton.
+
+You job is to implement a getInstance method for given class, return the same instance of this class every time you call this method.
+
+\subsection{Example}
+n Java:
+
+A a = A.getInstance();
+
+A b = A.getInstance();
+
+a should equal to b.
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+class Solution {
+public:
+    /**
+     * @return: The same instance of this class every time
+     */
+    static Solution* getInstance() {
+        // write your code here
+        static Solution * m_pInstance;
+        if(m_pInstance == NULL){
+            m_pInstance = new Solution();
+        }
+        return m_pInstance;
+    }
+private:
+    Solution(){
+
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+class Solution:
+    # @return: The same instance of this class every time
+    instance = None
+    @classmethod
+    def getInstance(cls):
+        # write your code here
+        if cls.instance is None:
+            cls.instance = Solution()
+        return cls.instance
+\end{lstlisting}
+\normalsize 
