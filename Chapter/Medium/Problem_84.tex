@@ -1,0 +1,61 @@
+\section{Problem ID: 84 Single Number III}
+\subsection{Description}
+Given 2*n + 2 numbers, every numbers occurs twice except two, find them.
+
+\subsection{Example}
+Given [1,2,2,3,4,4,5,3] return 1 and 5
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+class Solution {
+public:
+    /**
+     * @param A : An integer array
+     * @return : Two integers
+     */
+    vector<int> singleNumberIII(vector<int> &A) {
+        // write your code here
+        int Xor = 0;
+        for(int i = 0; i < A.size(); i++){
+            Xor ^= A[i];
+        }
+        int lowbit = Xor & -Xor;
+        int a = 0;
+        int b = 0;
+        for(int i = 0; i < A.size(); i++){
+            if(A[i] & lowbit){
+                a ^= A[i];
+            }else{
+                b ^= A[i];
+            }
+        }
+        vector<int> ans;
+        ans.push_back(a);
+        ans.push_back(b);
+        return ans;
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+class Solution:
+    """
+    @param A : An integer array
+    @return : Two integer
+    """
+    def singleNumberIII(self, A):
+        # write your code here
+        xor = reduce(lambda x, y : x ^ y, A)
+        lowbit = xor & -xor
+        a, b = 0, 0
+        for num in A:
+            if num & lowbit:
+                a ^= num
+            else:
+                b ^= num
+        return (a, b)
+\end{lstlisting}
+\normalsize 
