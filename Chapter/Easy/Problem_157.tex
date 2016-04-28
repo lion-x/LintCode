@@ -1,0 +1,51 @@
+\section{Problem ID: 157 Unique Characters}
+\subsection{Description}
+Implement an algorithm to determine if a string has all unique characters.
+
+\subsection{Example}
+Given "abc", return true.
+
+Given "aab", return false.
+
+\subsection{Code}
+\scriptsize
+\subsubsection{C++}
+\begin{lstlisting}[language=C++]
+class Solution {
+public:
+    /**
+     * @param str: a string
+     * @return: a boolean
+     */
+    bool isUnique(string &str) {
+        // write your code here
+        int ch[128] = {0};
+        for(int i = 0; i < str.length(); i++){
+            if(ch[str[i]] != 0){
+                return false;
+            }else{
+                ch[str[i]] = 1;
+            }
+        }
+        return true;
+    }
+};
+\end{lstlisting}
+
+\subsubsection{Python}
+\begin{lstlisting}[language=Python]
+class Solution:
+    # @param s: a string
+    # @return: a boolean
+    def isUnique(self, str):
+        # write your code here
+        ch = range(129)
+        for i in range(129):
+            ch[i] = 0
+        for s in str:
+            if ch[ord(s)] != 0:
+                return False
+            ch[ord(s)] = ch[ord(s)] + 1
+        return True
+\end{lstlisting}
+\normalsize 
